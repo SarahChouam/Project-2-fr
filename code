@@ -1,2 +1,34 @@
-print("1234")
+# Define a class for Hurricane information
+class Hurricane:
+    def __init__(self, name, level, location):
+        self.name = name
+        self.level = level
+        self.location = location
+
+    def __repr__(self):
+        return f"{self.name} (Category {self.level}) - {self.location}"
+
+# Function to rank hurricanes by level (category) and then by name or location
+def rank_hurricanes(hurricanes):
+    # Sort by level first, then by name if levels are the same
+    sorted_hurricanes = sorted(hurricanes, key=lambda x: (-x.level, x.name))
+    return sorted_hurricanes
+
+# Sample hurricane data (can be extended or loaded dynamically)
+hurricanes = [
+    Hurricane("Katrina", 5, "Gulf of Mexico"),
+    Hurricane("Irma", 4, "Caribbean Sea"),
+    Hurricane("Harvey", 4, "Texas"),
+    Hurricane("Maria", 5, "Caribbean Sea"),
+    Hurricane("Sandy", 3, "East Coast US"),
+]
+
+# Rank the hurricanes
+ranked_hurricanes = rank_hurricanes(hurricanes)
+
+# Display the ranked hurricanes
+print("Ranked Hurricanes:")
+for idx, hurricane in enumerate(ranked_hurricanes, start=1):
+    print(f"{idx}. {hurricane}")
+
 
